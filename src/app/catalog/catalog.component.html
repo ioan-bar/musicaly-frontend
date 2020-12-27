@@ -1,0 +1,83 @@
+<div class="container px-5">
+
+  <div class="row">
+    <div class="col">
+
+      <div class="heading d-flex justify-content-between">
+        <div class="title">
+          The musicaly catalog
+        </div>
+        <button class="btn btn-primary btn-add-song" data-bs-target="#exampleModal" data-bs-toggle="modal">Add song
+        </button>
+      </div>
+
+      <div *ngFor="let song of songs" class="card">
+        <div class="card-header d-flex justify-content-end">
+          03:15
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{song.title}}</h5>
+          <p class="card-text ">
+            Artists: {{song.singer.name}}
+            <br>
+            Genre: {{song.genre}}
+          </p>
+
+          <div class="options d-flex justify-content-between">
+            <a class="pull-right btn btn-primary btn-play w-25" href="#">PLAY</a>
+            <a (click)="removeSong(song)" class="btn btn-primary btn-delete w-25" href="#">DELETE</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+</div>
+
+
+<!-- Modal -->
+<div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="exampleModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add song in catalog</h5>
+        <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+      </div>
+      <div class="modal-body">
+
+        <form #songForm="ngForm">
+          <div class="mb-3 d-flex justify-content-between align-items-center">
+            <label for="songTitle">Song Title</label>
+            <input [(ngModel)]="songToBeAdded.title" class="form-text" id="songTitle" name="title" ngModel type="text">
+          </div>
+          <div class="mb-3 d-flex justify-content-between align-items-center">
+            <label for="songYear">Song Year</label>
+            <input [(ngModel)]="songToBeAdded.year" class="form-text" id="songYear" name="year" ngModel type="text">
+          </div>
+          <div class="mb-3 d-flex justify-content-between align-items-center">
+            <label for="songGenre">Song Genre</label>
+            <input [(ngModel)]="songToBeAdded.genre" class="form-text" id="songGenre" name="genre" ngModel type="text">
+          </div>
+          <div class="mb-3 d-flex justify-content-between align-items-center">
+            <label for="singerName">Singer</label>
+            <input [(ngModel)]="songToBeAdded.singer.name" class="form-text" id="singerName" name="singerName"
+                   ngModel type="text">
+          </div>
+          <div class="mb-3 d-flex justify-content-between align-items-center">
+            <label for="singerAge">Singer age</label>
+            <input [(ngModel)]="songToBeAdded.singer.age" class="form-text" id="singerAge" name="singerAge" ngModel
+                   type="text">
+          </div>
+        </form>
+
+
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Close</button>
+        <button (click)="addSong()" class="btn btn-primary" type="button">Save</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+@import '../../colors';
+* {
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  color: #343432;
+}
+.navbar {
+  background-color: white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  z-index: 1030;
+  padding: .3rem 0.8rem;
+}
+
+
+.header-nav-item {
+  font-size: 16px;
+  font-weight: bold;
+  transition: 0.2s;
+  &:hover {
+    color: $fucsia;
+  }
+  &:focus{
+    outline: none !important;
+    box-shadow: none;
+  }
+}

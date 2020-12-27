@@ -1,0 +1,37 @@
+@import "../../colors";
+
+.title {
+  font-size: 24px;
+  padding: 20px;
+  font-weight: bold;
+}
+.btn-add-song{
+  background-color: coral;
+  border: none;
+  height: 40px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+
+.options {
+  .btn {
+    background-color: $fucsia;
+    border: none;
+
+  }
+
+  .btn-play {
+
+  }
+
+  .btn-delete {
+    background-color: $bluish;
+  }
+}
+
+
+.card {
+  padding-bottom: 5px;
+  margin-bottom: 25px;
+}
