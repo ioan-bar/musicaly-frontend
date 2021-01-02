@@ -11,9 +11,9 @@
           <button class="btn btn-outline-info" id="dd" ngbDropdownToggle>Filtreaza</button>
           <div ngbDropdownMenu aria-labelledby="dd">
             <button ngbDropdownItem (click)="fetchRequiredSongs('All')">All</button>
-            <button ngbDropdownItem (click)="fetchRequiredSongs('Miley Cyrus')">Miley Cyrus</button>
-            <button ngbDropdownItem (click)="fetchRequiredSongs('50 Cent')">50 Cent</button>
-            <button ngbDropdownItem (click)="fetchRequiredSongs('Blake Shelton')">Blake Shelton</button>
+            <button ngbDropdownItem *ngFor="let artist of singers" (click)="fetchRequiredSongs(artist)">{{artist}}</button>
+<!--            <button ngbDropdownItem (click)="fetchRequiredSongs('50 Cent')">50 Cent</button>-->
+<!--            <button ngbDropdownItem (click)="fetchRequiredSongs('Blake Shelton')">Blake Shelton</button>-->
           </div>
         </div>
 

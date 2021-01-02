@@ -12,6 +12,7 @@ export class SongsService {
   }
   public songArraySubject = new BehaviorSubject([]);
   public genresArraySubject = new BehaviorSubject([]);
+  public singersArraySubject = new BehaviorSubject([]);
   public songsOfGenreArraySubject = new BehaviorSubject([]);
   private rootURL = 'http://localhost:8080/';
 
@@ -38,6 +39,11 @@ export class SongsService {
         });
   }
 
+  public fetchAllArtists(): void{
+    this.http.get<string[]>(this.rootURL + 'singers').subscribe(singersArray => {
+      this.singersArraySubject.next(singersArray);
+    });
+  }
   public fetchAllGenres(): void {
     this.http.get<string[]>(this.rootURL + 'genres').subscribe(data => {
       this.genresArraySubject.next(data);

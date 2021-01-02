@@ -12,6 +12,7 @@ import {SongsService} from '../shared/services/songs.service';
 export class CatalogComponent implements OnInit {
   public songs: Song[] = [];
   public songToBeAdded: Song = new Song('', 0, new Singer('', 0), '');
+  public singers: string[] = [];
 
   constructor(private service: SongsService) {
   }
@@ -20,7 +21,11 @@ export class CatalogComponent implements OnInit {
     this.service.songArraySubject.subscribe(songsArray => {
       this.songs = songsArray;
     });
+    this.service.singersArraySubject.subscribe(singersArray => {
+      this.singers = singersArray;
+    });
     this.service.fetchAllSongs();
+    this.service.fetchAllArtists();
   }
 
   public removeSong(song: Song): void {
@@ -33,7 +38,7 @@ export class CatalogComponent implements OnInit {
 
   public fetchRequiredSongs(artist: string): void {
     if (artist.toLowerCase() === 'all') {
-      this.service.fetchAllSongs();
+      this.service.fetchAllArtists();
     } else {
       this.service.fetchSongsOfArtist(artist).subscribe(data => {
         this.songs = data;
