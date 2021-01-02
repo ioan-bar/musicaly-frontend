@@ -1,18 +1,21 @@
 import {Injectable} from '@angular/core';
 import {Song} from '../models/song.model';
 import {HttpClient} from '@angular/common/http';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SongsService {
-  public songArraySubject = new BehaviorSubject([]);
-  public genresArraySubject = new BehaviorSubject([]);
-  private rootURL = 'http://localhost:8080/';
 
   constructor(private http: HttpClient) {
   }
+  public songArraySubject = new BehaviorSubject([]);
+  public genresArraySubject = new BehaviorSubject([]);
+  public songsOfGenreArraySubject = new BehaviorSubject([]);
+  private rootURL = 'http://localhost:8080/';
+
+  public songs: string[] = [];
 
   public fetchAllSongs(): void {
     this.http.get<Song[]>(this.rootURL + 'songs').subscribe(songsArray => {
@@ -40,12 +43,11 @@ export class SongsService {
       this.genresArraySubject.next(data);
     });
   }
+  public fetchSongsOfGenre(genre: string): Observable<any> {
+     return this.http.get<string[]>(this.rootURL + 'genres/songs?genre=' + genre);
+  }
 
-  public getSongsOfGenre(genre: string): string[] {
-    let result;
-    this.http.get<string[]>(this.rootURL + 'genres/songs?genre=' + genre).subscribe(data => {
-      result = data;
-    });
-    return result;
+  public fetchSongsOfArtist(artist: string): Observable<Song[]> {
+    return this.http.get<Song[]>(this.rootURL + 'song?singer=' + artist);
   }
 }

@@ -1,10 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient, HttpParams} from '@angular/common/http';
-import {Subscription} from 'rxjs';
-import {log} from 'util';
 import {Song} from '../shared/models/song.model';
-import {Router} from '@angular/router';
-import {NgForm} from '@angular/forms';
 import {Singer} from '../shared/models/singer.model';
 import {SongsService} from '../shared/services/songs.service';
 
@@ -34,6 +29,16 @@ export class CatalogComponent implements OnInit {
 
   public addSong(): void {
     this.service.addSong(this.songToBeAdded);
+  }
+
+  public fetchRequiredSongs(artist: string): void {
+    if (artist.toLowerCase() === 'all') {
+      this.service.fetchAllSongs();
+    } else {
+      this.service.fetchSongsOfArtist(artist).subscribe(data => {
+        this.songs = data;
+      });
+    }
   }
 }
 

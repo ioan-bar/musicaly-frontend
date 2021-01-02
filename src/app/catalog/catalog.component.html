@@ -7,6 +7,27 @@
         <div class="title">
           The musicaly catalog
         </div>
+        <div ngbDropdown class="d-inline-block">
+          <button class="btn btn-outline-info" id="dd" ngbDropdownToggle>Filtreaza</button>
+          <div ngbDropdownMenu aria-labelledby="dd">
+            <button ngbDropdownItem (click)="fetchRequiredSongs('All')">All</button>
+            <button ngbDropdownItem (click)="fetchRequiredSongs('Miley Cyrus')">Miley Cyrus</button>
+            <button ngbDropdownItem (click)="fetchRequiredSongs('50 Cent')">50 Cent</button>
+            <button ngbDropdownItem (click)="fetchRequiredSongs('Blake Shelton')">Blake Shelton</button>
+          </div>
+        </div>
+
+<!--        <button class="btn btn-secondary" (click)="getSomething('Miley Cyrus')">CLICK</button>-->
+<!--        <div class="dropdown">-->
+<!--          <button class="btn btn-secondary dropdown-toggle" (click)="getSomething('Miley Cyrus')" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">-->
+<!--            Filtreaza-->
+<!--          </button>-->
+<!--          <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton">-->
+<!--            <li><a class="dropdown-item " href="#" (click)="getSomething('Miley Cyrus')">Miley Cyrus</a></li>-->
+<!--            <li><a class="dropdown-item" href="#">50 Cent</a></li>-->
+<!--            <li><a class="dropdown-item" href="#">Blake Shelton</a></li>-->
+<!--          </ul>-->
+<!--        </div>-->
         <button class="btn btn-primary btn-add-song" data-bs-target="#exampleModal" data-bs-toggle="modal">Add song
         </button>
       </div>

@@ -13,7 +13,15 @@
   margin-bottom: auto;
 }
 
-
+.dropdown{
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.btn{
+  &:focus{
+    box-shadow: none;
+  }
+}
 .options {
   .btn {
     background-color: $fucsia;
