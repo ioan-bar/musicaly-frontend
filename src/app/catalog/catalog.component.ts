@@ -38,7 +38,7 @@ export class CatalogComponent implements OnInit {
 
   public fetchRequiredSongs(artist: string): void {
     if (artist.toLowerCase() === 'all') {
-      this.service.fetchAllArtists();
+      this.service.fetchAllSongs();
     } else {
       this.service.fetchSongsOfArtist(artist).subscribe(data => {
         this.songs = data;
